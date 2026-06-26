@@ -387,7 +387,87 @@
 
         .reveal-3d.active {
             opacity: 1;
-            transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+            transform: translateY(0) rotateX(0);
+        }
+
+        /* Mobile Keyframes for dynamic ID card */
+        @keyframes floatMobile {
+            0% { transform: translateY(0) rotateX(2deg) rotateY(0deg); }
+            50% { transform: translateY(-15px) rotateX(-3deg) rotateY(3deg); }
+            100% { transform: translateY(0) rotateX(2deg) rotateY(0deg); }
+        }
+
+        /* Dedicated Mobile Overhaul */
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 5%; }
+            .nav-logo { font-size: 1.2rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.9rem; }
+            
+            section { padding: 6rem 5%; }
+            
+            #hero { padding-top: 10rem; }
+            .hero-grid { 
+                grid-template-columns: 1fr; 
+                gap: 5rem; 
+            }
+            .hero-content h1 { 
+                font-size: clamp(3.5rem, 15vw, 5rem); 
+                line-height: 1.1; 
+                margin: 1.5rem 0;
+            }
+            .hero-desc { font-size: 1.15rem; max-width: 100%; }
+            
+            /* ID Card Mobile Overhaul */
+            .id-card-wrapper { 
+                height: auto; 
+                width: 100%;
+                margin: 0 auto;
+                perspective: 1500px;
+            }
+            .id-card { 
+                width: 100%; 
+                max-width: 320px; 
+                margin: 0 auto;
+                height: 500px;
+                padding: 1.5rem;
+                animation: floatMobile 6s ease-in-out infinite;
+                transform: none !important;
+            }
+            .id-photo { 
+                height: 280px; 
+                object-fit: cover;
+                object-position: top center;
+                margin-top: 1.5rem;
+            }
+            .glare { display: none !important; }
+            
+            .statement-section { padding: 4rem 5%; }
+            .statement { font-size: clamp(2.5rem, 10vw, 4rem); }
+            
+            .spacious-item { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem; 
+                margin-bottom: 5rem;
+            }
+            .item-number { font-size: 5rem; position: static; margin-bottom: -2rem; opacity: 0.15; }
+            .experience-content { 
+                border-left: none; 
+                padding-left: 0; 
+                border-top: 1px solid rgba(255,255,255,0.1); 
+                padding-top: 2rem;
+            }
+            .experience-content h3 { font-size: 2rem; }
+            .experience-content p { font-size: 1.1rem; }
+            
+            .skills-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .skill-category h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+            .skill-item { font-size: 1.1rem; padding: 1rem 1.2rem; }
+            
+            footer { padding: 6rem 5% 4rem; }
+            .footer-huge { font-size: clamp(3.5rem, 15vw, 6rem); margin-bottom: 3rem; }
+            .contact-links { flex-direction: column; gap: 2rem; }
+            .contact-link { font-size: 1.8rem; }
         }
 
         /* Skills Grid */
