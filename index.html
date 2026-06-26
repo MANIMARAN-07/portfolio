@@ -3,28 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Security Headers removed for compatibility -->
-
-    <!-- SEO & Identity -->
-    <title>Manimaran Ayyappan | Full-Stack, IoT & GenAI Developer</title>
-    <meta name="description" content="Portfolio of Manimaran Ayyappan, a Full-Stack Developer specializing in IoT, GenAI, and modern web architectures. Explore my projects and expertise.">
-    <meta name="keywords" content="Manimaran Ayyappan, Full-Stack Developer, IoT Engineer, GenAI, Web Development, Portfolio">
-    <meta name="author" content="Manimaran Ayyappan">
-    <link rel="canonical" href="https://maran-3d-portfolio.surge.sh">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://maran-3d-portfolio.surge.sh">
-    <meta property="og:title" content="Manimaran Ayyappan | Developer Portfolio">
-    <meta property="og:description" content="Full-Stack Developer specializing in IoT, GenAI, and scalable web architectures.">
-    <meta property="og:image" content="https://maran-3d-portfolio.surge.sh/profile.jpg">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Manimaran Ayyappan | Developer Portfolio">
-    <meta name="twitter:description" content="Full-Stack Developer specializing in IoT, GenAI, and scalable web architectures.">
-    <meta name="twitter:image" content="https://maran-3d-portfolio.surge.sh/profile.jpg">
+    <title>MARAN-portfolio</title>
     <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C6AF7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'></rect><line x1='8' y1='21' x2='16' y2='21'></line><line x1='12' y1='17' x2='12' y2='21'></line></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +163,7 @@
 
         /* Layout */
         section {
-            padding: 10rem 5%;
+            padding: 5rem 5%;
             max-width: 1600px;
             margin: 0 auto;
             min-height: 100vh;
@@ -198,7 +177,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            padding-top: 15rem;
+            padding-top: 8rem;
         }
 
         .hero-content {
@@ -311,11 +290,10 @@
             margin-bottom: 1rem;
         }
 
-        .resume-btn:hover {
-            background: #fff !important;
-            color: #000 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(124, 106, 247, 0.5);
+        .id-barcode:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
+            transform: scale(1.02);
         }
         
         .id-barcode {
@@ -356,7 +334,7 @@
 
         /* Single Grid / Spacious Layout */
         .spacious-item {
-            margin-bottom: 15rem;
+            margin-bottom: 6rem;
             position: relative;
         }
 
@@ -432,9 +410,9 @@
             .nav-links { gap: 1rem; }
             .nav-links a { font-size: 0.9rem; }
             
-            section { padding: 6rem 5%; }
+            section { padding: 3rem 5%; }
             
-            #hero { padding-top: 10rem; }
+            #hero { padding-top: 6rem; }
             .hero-grid { 
                 grid-template-columns: 1fr; 
                 gap: 5rem; 
@@ -463,20 +441,19 @@
                 transform: none !important;
             }
             .id-photo { 
-                height: 280px; 
-                object-fit: cover;
-                object-position: top center;
+                height: 300px; 
+                object-fit: contain;
                 margin-top: 1.5rem;
             }
             .glare { display: none !important; }
             
-            .statement-section { padding: 4rem 5%; }
+            .statement-section { padding: 3rem 5%; }
             .statement { font-size: clamp(2.5rem, 10vw, 4rem); }
             
             .spacious-item { 
                 grid-template-columns: 1fr; 
                 gap: 1.5rem; 
-                margin-bottom: 5rem;
+                margin-bottom: 3rem;
             }
             .item-number { font-size: 5rem; position: static; margin-bottom: -2rem; opacity: 0.15; }
             .experience-content { 
@@ -492,7 +469,7 @@
             .skill-category h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
             .skill-item { font-size: 1.1rem; padding: 1rem 1.2rem; }
             
-            footer { padding: 6rem 5% 4rem; }
+            footer { padding: 3rem 5% 2rem; }
             .footer-huge { font-size: clamp(3.5rem, 15vw, 6rem); margin-bottom: 3rem; }
             .contact-links { flex-direction: column; gap: 2rem; }
             .contact-link { font-size: 1.8rem; }
@@ -543,7 +520,7 @@
 
         /* Footer */
         footer {
-            padding: 10rem 5% 4rem;
+            padding: 5rem 5% 4rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -629,14 +606,12 @@
                 <div class="id-card">
                     <div class="glare" id="glare"></div>
                     <!-- Empty src so you can drop your photo here -->
-                    <img id="profile-photo" src="profile.jpg" alt="Manimaran Ayyappan Profile Picture" class="id-photo" loading="eager" fetchpriority="high">
+                    <img id="profile-photo" src="profile.jpg" alt="Profile" class="id-photo">
                     <div class="id-details">
                         <div class="id-name">Manimaran A</div>
                         <div class="id-role">Full-Stack · IoT · GenAI</div>
-                        <a href="resume.html" target="_blank" class="hover-target" style="display: block; text-decoration: none; margin-top: 1rem;" title="View Resume">
-                            <div class="id-barcode" style="margin-bottom: 0.5rem; transition: transform 0.3s; cursor: pointer;"></div>
-                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-align: center; letter-spacing: 2px;">CLICK BARCODE FOR RESUME</div>
-                        </a>
+                        <a href="Manimaran_Resume.pdf" class="id-barcode hover-target" download title="Download Resume" style="display: block; text-decoration: none; cursor: pointer; transition: all 0.3s;"></a>
+                        <div style="text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; letter-spacing: 2px;">CLICK BARCODE TO DOWNLOAD RESUME</div>
                     </div>
                 </div>
             </div>
