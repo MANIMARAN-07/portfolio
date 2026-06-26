@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Headers removed for compatibility -->
+
+    <!-- SEO & Identity -->
+    <title>Manimaran Ayyappan | Full-Stack, IoT & GenAI Developer</title>
+    <meta name="description" content="Portfolio of Manimaran Ayyappan, a Full-Stack Developer specializing in IoT, GenAI, and modern web architectures. Explore my projects and expertise.">
+    <meta name="keywords" content="Manimaran Ayyappan, Full-Stack Developer, IoT Engineer, GenAI, Web Development, Portfolio">
+    <meta name="author" content="Manimaran Ayyappan">
+    <link rel="canonical" href="https://maran-3d-portfolio.surge.sh">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maran-3d-portfolio.surge.sh">
+    <meta property="og:title" content="Manimaran Ayyappan | Developer Portfolio">
+    <meta property="og:description" content="Full-Stack Developer specializing in IoT, GenAI, and scalable web architectures.">
+    <meta property="og:image" content="https://maran-3d-portfolio.surge.sh/profile.jpg">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manimaran Ayyappan | Developer Portfolio">
+    <meta name="twitter:description" content="Full-Stack Developer specializing in IoT, GenAI, and scalable web architectures.">
+    <meta name="twitter:image" content="https://maran-3d-portfolio.surge.sh/profile.jpg">
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C6AF7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'></rect><line x1='8' y1='21' x2='16' y2='21'></line><line x1='12' y1='17' x2='12' y2='21'></line></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #F0EDE8;
+            --text-muted: #888581;
+            --accent-color: #7C6AF7;
+            --accent-glow: rgba(124, 106, 247, 0.2);
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --border-color: rgba(255, 255, 255, 0.05);
+            --font-heading: 'DM Serif Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --cursor-size: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 12px;
+            height: 12px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: #fff;
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s cubic-bezier(0.77, 0, 0.175, 1), height 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .cursor-ring { display: none; }
+
+        body:active .cursor-dot {
+            width: 6px; height: 6px;
+        }
+
+        .hover-target:hover ~ .cursor-dot {
+            width: 60px; height: 60px;
+            background-color: #fff;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .statement {
+            font-family: var(--font-heading);
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: clamp(4rem, 10vw, 8rem);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 4rem;
+            color: var(--text-color);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            max-width: 800px;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 2px;
+            background: #fff;
+            transform: translateX(-101%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .nav-logo:hover::after {
+            transform: translateX(0);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #fff;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .nav-link:hover { opacity: 1; }
+
+        /* Layout */
+        section {
+            padding: 10rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        #hero {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15rem;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            z-index: 2;
+        }
+
+        .hero-role {
+            font-family: var(--font-body);
+            color: var(--accent-color);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .hero-desc {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            margin-top: 2rem;
+            color: var(--text-color);
+        }
+
+        /* 3D ID Card */
+        .hero-visual {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px; /* 3D Perspective */
+        }
+
+        .id-card-wrapper {
+            width: 360px;
+            height: 540px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+        }
+
+        .id-card {
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 20, 22, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 
+                        inset 0 0 0 1px rgba(255,255,255,0.05);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .id-card::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .glare {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 20px;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            mix-blend-mode: overlay;
+            transform: translateZ(1px);
+        }
+
+        .id-photo {
+            width: 100%;
+            height: 320px;
+            margin-top: 1.5rem;
+            border-radius: 12px;
+            background: transparent;
+            object-fit: contain;
+            transform: translateZ(40px);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        .id-details {
+            margin-top: auto;
+            transform: translateZ(30px);
+        }
+
+        .id-name {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .id-role {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .resume-btn:hover {
+            background: #fff !important;
+            color: #000 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(124, 106, 247, 0.5);
+        }
+        
+        .id-barcode {
+            width: 100%;
+            height: 40px;
+            background: repeating-linear-gradient(
+                90deg,
+                #fff,
+                #fff 2px,
+                transparent 2px,
+                transparent 4px,
+                #fff 4px,
+                #fff 5px,
+                transparent 5px,
+                transparent 8px
+            );
+            opacity: 0.3;
+        }
+
+        /* Impressive Statements */
+        .statement-section {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--bg-color);
+        }
+
+        .statement {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 1200px;
+        }
+
+        /* Single Grid / Spacious Layout */
+        .spacious-item {
+            margin-bottom: 15rem;
+            position: relative;
+        }
+
+        .spacious-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-number {
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            color: rgba(255,255,255,0.03);
+            position: absolute;
+            top: -4rem;
+            left: -2rem;
+            z-index: -1;
+            line-height: 1;
+        }
+
+        .project-content, .experience-content {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 3rem;
+            margin-left: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+        
+        .tech-badge:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Scroll Animations (3D Reveals) */
+        .reveal-3d {
+            opacity: 0;
+            transform: perspective(1000px) rotateX(10deg) translateY(50px) scale(0.95);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: center bottom;
+        }
+
+        .reveal-3d.active {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+
+        /* Mobile Keyframes for dynamic ID card */
+        @keyframes floatMobile {
+            0% { transform: translateY(0) rotateX(2deg) rotateY(0deg); }
+            50% { transform: translateY(-15px) rotateX(-3deg) rotateY(3deg); }
+            100% { transform: translateY(0) rotateX(2deg) rotateY(0deg); }
+        }
+
+        /* Dedicated Mobile Overhaul */
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 5%; }
+            .nav-logo { font-size: 1.2rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.9rem; }
+            
+            section { padding: 6rem 5%; }
+            
+            #hero { padding-top: 10rem; }
+            .hero-grid { 
+                grid-template-columns: 1fr; 
+                gap: 5rem; 
+            }
+            .hero-content h1 { 
+                font-size: clamp(3.5rem, 15vw, 5rem); 
+                line-height: 1.1; 
+                margin: 1.5rem 0;
+            }
+            .hero-desc { font-size: 1.15rem; max-width: 100%; }
+            
+            /* ID Card Mobile Overhaul */
+            .id-card-wrapper { 
+                height: auto; 
+                width: 100%;
+                margin: 0 auto;
+                perspective: 1500px;
+            }
+            .id-card { 
+                width: 100%; 
+                max-width: 320px; 
+                margin: 0 auto;
+                height: 500px;
+                padding: 1.5rem;
+                animation: floatMobile 6s ease-in-out infinite;
+                transform: none !important;
+            }
+            .id-photo { 
+                height: 280px; 
+                object-fit: cover;
+                object-position: top center;
+                margin-top: 1.5rem;
+            }
+            .glare { display: none !important; }
+            
+            .statement-section { padding: 4rem 5%; }
+            .statement { font-size: clamp(2.5rem, 10vw, 4rem); }
+            
+            .spacious-item { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem; 
+                margin-bottom: 5rem;
+            }
+            .item-number { font-size: 5rem; position: static; margin-bottom: -2rem; opacity: 0.15; }
+            .experience-content { 
+                border-left: none; 
+                padding-left: 0; 
+                border-top: 1px solid rgba(255,255,255,0.1); 
+                padding-top: 2rem;
+            }
+            .experience-content h3 { font-size: 2rem; }
+            .experience-content p { font-size: 1.1rem; }
+            
+            .skills-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .skill-category h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+            .skill-item { font-size: 1.1rem; padding: 1rem 1.2rem; }
+            
+            footer { padding: 6rem 5% 4rem; }
+            .footer-huge { font-size: clamp(3.5rem, 15vw, 6rem); margin-bottom: 3rem; }
+            .contact-links { flex-direction: column; gap: 2rem; }
+            .contact-link { font-size: 1.8rem; }
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+
+        .skill-category {
+            padding: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1px; /* Sharp premium edges */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-category::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, transparent 50%, var(--border-color) 50%);
+        }
+
+        .skill-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .skill-list li {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .skill-list li i {
+            color: var(--accent-color);
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 10rem 5% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+        
+        .footer-huge {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-family: var(--font-heading);
+            color: #ffffff;
+            line-height: 0.8;
+            margin-bottom: 4rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+        
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 0; height: 1px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+        .contact-link:hover::after { width: 100%; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            #hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-visual { margin-top: 6rem; }
+            .nav-links { display: none; }
+            .project-content, .experience-content { border-left: none; padding-left: 0; margin-left: 0; }
+            .item-number { left: 0; opacity: 0.1; }
+        }
+    </style>
+</head>
+<body class="hover-target">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <nav>
+        <a href="#" class="nav-logo hover-target">Manimaran Ayyappan</a>
+        <div class="nav-links">
+            <a href="#experience" class="nav-link hover-target">Experience</a>
+            <a href="#projects" class="nav-link hover-target">Projects</a>
+            <a href="#contact" class="nav-link hover-target">Connect</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content reveal-3d">
+            <span class="hero-role">IT Student & Developer</span>
+            <h1>Not Just Code.<br>Beyond Execution.</h1>
+            <p class="hero-desc">
+                Not just random code execution. I bridge hardware constraints and generative intelligence to architect systems that exist in the physical and digital worlds simultaneously.
+            </p>
+        </div>
+        
+        <div class="hero-visual reveal-3d" id="id-card-container">
+            <div class="id-card-wrapper" id="id-card">
+                <div class="id-card">
+                    <div class="glare" id="glare"></div>
+                    <!-- Empty src so you can drop your photo here -->
+                    <img id="profile-photo" src="profile.jpg" alt="Manimaran Ayyappan Profile Picture" class="id-photo" loading="eager" fetchpriority="high">
+                    <div class="id-details">
+                        <div class="id-name">Manimaran A</div>
+                        <div class="id-role">Full-Stack · IoT · GenAI</div>
+                        <a href="resume.html" target="_blank" class="hover-target" style="display: block; text-decoration: none; margin-top: 1rem;" title="View Resume">
+                            <div class="id-barcode" style="margin-bottom: 0.5rem; transition: transform 0.3s; cursor: pointer;"></div>
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-align: center; letter-spacing: 2px;">CLICK BARCODE FOR RESUME</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statement-section reveal-3d">
+        <div class="statement">Logic Dictates.<br>Execution Defines.</div>
+    </section>
+
+    <section id="about">
+        <h2 class="reveal-3d">About</h2>
+        
+        <div class="spacious-item reveal-3d">
+            <div class="item-number">00</div>
+            <div class="experience-content" style="border-left-color: #333;">
+                <p style="font-size: 1.5rem; color: #fff; margin-bottom: 1.5rem;">Professional Summary</p>
+                <p style="margin-bottom: 4rem; max-width: 900px; font-size: 1.35rem;">
+                    An Information Technology student passionate about learning foundational technologies and practical software applications. Seeking a beginner-level opportunity to develop skill-based learning from scratch, backed by strong teamwork and problem-solving skills.
+                </p>
+
+                <p style="font-size: 1.5rem; color: #fff; margin-bottom: 1.5rem;">Education</p>
+                <div style="margin-bottom: 3rem;">
+                    <div style="color: var(--accent-color); font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SEP 2023 — PRESENT</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">B.Tech Information Technology</h3>
+                    <p>Dr. NGP Institute of Technology, Coimbatore <br>CGPA: 7.08</p>
+                </div>
+                <div>
+                    <div style="color: var(--accent-color); font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.5rem;">APR 2023</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Higher Secondary Education</h3>
+                    <p>Velammal Matriculation Hr. Sec. School, Theni <br>Score: 78.5%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="reveal-3d">Experience</h2>
+        
+        <div class="spacious-item reveal-3d">
+            <div class="item-number">01</div>
+            <div class="experience-content">
+                <div style="color: var(--accent-color); font-weight: 600; letter-spacing: 0.1em; margin-bottom: 1rem;">JUNE 2025</div>
+                <h3>Generative AI Intern</h3>
+                <p style="font-size: 1.5rem; color: #fff; margin-bottom: 2rem;">Gateway Software Solutions, Coimbatore</p>
+                <p>
+                    Architected robust text processing pipelines leveraging OpenAI APIs, Hugging Face architectures, and the Bloom LLM. Applied foundational machine learning and Transformer models for precise sentiment and emotion classification on vast unstructured datasets (YouTube comments). 
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Vector DBs</span>
+                    <span class="tech-badge">RAG</span>
+                    <span class="tech-badge">NLP</span>
+                    <span class="tech-badge">LLMs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statement-section reveal-3d">
+        <div class="statement">Building Without<br>Compromise.</div>
+    </section>
+
+    <section id="projects">
+        <h2 class="reveal-3d">Selected Works</h2>
+
+        <div class="spacious-item reveal-3d">
+            <div class="item-number">01</div>
+            <div class="project-content">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: var(--accent-color);">
+                    <i data-lucide="battery-charging" width="28" height="28"></i>
+                    <span style="font-weight: 600; letter-spacing: 0.1em;">SEP 2025 — MAR 2026</span>
+                </div>
+                <h3>BMS Monitoring for EVs</h3>
+                <p>
+                    A real-time IoT battery monitoring system engineered using ESP32 and Blynk. Tracks vital EV temperature and voltage metrics with an automatic load cutoff protocol to prevent thermal runaway. Successfully presented at the ICSPAI 2026 conference.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">ESP32</span>
+                    <span class="tech-badge">Embedded C</span>
+                    <span class="tech-badge">IoT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacious-item reveal-3d">
+            <div class="item-number">02</div>
+            <div class="project-content">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: var(--accent-color);">
+                    <i data-lucide="users" width="28" height="28"></i>
+                    <span style="font-weight: 600; letter-spacing: 0.1em;">SEP 2024 — MAR 2025</span>
+                </div>
+                <h3>Alumni Institution Portal</h3>
+                <p>
+                    A comprehensive alumni network platform. Features advanced registration functionality and an intelligent job recommendation engine built on Python text processing, wrapped in a scalable MERN stack architecture.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">MERN Stack</span>
+                    <span class="tech-badge">Python NLP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacious-item reveal-3d">
+            <div class="item-number">03</div>
+            <div class="project-content">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: var(--accent-color);">
+                    <i data-lucide="accessibility" width="28" height="28"></i>
+                    <span style="font-weight: 600; letter-spacing: 0.1em;">SEP 2023 — MAR 2024</span>
+                </div>
+                <h3>Smart Blind Stick</h3>
+                <p>
+                    An embedded real-time obstacle detection system. By orchestrating ultrasonic sensors and haptic motor feedback, the system drastically reduces collisions by 60%, delivering enhanced navigational autonomy.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Arduino</span>
+                    <span class="tech-badge">Sensor Integration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="statement-section reveal-3d">
+        <div class="statement">Precision In<br>Every Stack.</div>
+    </section>
+
+    <section id="skills">
+        <div class="skills-grid">
+            <div class="skill-category reveal-3d">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Core Dev</h3>
+                <ul class="skill-list">
+                    <li><i data-lucide="code-2"></i> Java</li>
+                    <li><i data-lucide="code-2"></i> Python</li>
+                    <li><i data-lucide="code-2"></i> JavaScript</li>
+                    <li><i data-lucide="layout"></i> React & Node.js</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category reveal-3d">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Hardware</h3>
+                <ul class="skill-list">
+                    <li><i data-lucide="cpu"></i> ESP32</li>
+                    <li><i data-lucide="cpu"></i> Arduino</li>
+                    <li><i data-lucide="radio"></i> Sensors & IoT</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category reveal-3d">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Intelligence</h3>
+                <ul class="skill-list">
+                    <li><i data-lucide="brain-circuit"></i> NLP</li>
+                    <li><i data-lucide="brain-circuit"></i> Transformers</li>
+                    <li><i data-lucide="bot"></i> OpenAI API</li>
+                    <li><i data-lucide="bot"></i> Hugging Face</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-huge reveal-3d">CONNECT</div>
+        <p class="reveal-3d" style="color: var(--text-color); font-size: 1.5rem; text-align: center; margin: -2rem auto 3rem auto; font-family: var(--font-heading);">Eager to connect with you.</p>
+        <div class="contact-links reveal-3d">
+            <a href="mailto:maranconnect@gmail.com" class="contact-link hover-target">Email</a>
+            <a href="https://www.linkedin.com/in/manimaran-ayyappan" target="_blank" class="contact-link hover-target">LinkedIn</a>
+            <a href="https://github.com/MANIMARAN-07" target="_blank" class="contact-link hover-target">GitHub</a>
+            <a href="https://leetcode.com/u/MANIMARAN-A/" target="_blank" class="contact-link hover-target">LeetCode</a>
+        </div>
+        <p style="margin: 0 auto; font-size: 0.9rem; opacity: 0.5;">&copy; 2026 Manimaran Ayyappan. Engineered with precision.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Hide Nav on Scroll Down
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if (window.scrollY > lastScrollY) {
+                    nav.classList.add('hidden'); // Scrolling down
+                } else {
+                    nav.classList.remove('hidden'); // Scrolling up
+                }
+            } else {
+                nav.classList.remove('hidden'); // At top
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Custom Cursor Logic
+        const dot = document.getElementById('cursor-dot');
+        
+        // Don't show custom cursor on touch devices
+        if(window.matchMedia("(pointer: fine)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            });
+        } else {
+            dot.style.display = 'none';
+            document.body.style.cursor = 'auto';
+        }
+
+        // 3D ID Card Tilt Logic
+        const container = document.getElementById('id-card-container');
+        const card = document.getElementById('id-card');
+        const glare = document.getElementById('glare');
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate rotation (max 15 degrees)
+            const rotateX = ((y - centerY) / centerY) * -15;
+            const rotateY = ((x - centerX) / centerX) * 15;
+            
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            // Move glare
+            glare.style.opacity = '1';
+            glare.style.transform = `translateZ(1px) translate(${x - centerX}px, ${y - centerY}px)`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            glare.style.opacity = '0';
+        });
+
+        // 3D Scroll Reveal Logic
+        const reveals = document.querySelectorAll('.reveal-3d');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+
+    </script>
+</body>
+</html>
