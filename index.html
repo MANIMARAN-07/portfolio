@@ -265,7 +265,7 @@
             margin-top: 1.5rem;
             border-radius: 12px;
             background: transparent;
-            object-fit: contain;
+            object-fit: cover;
             transform: translateZ(40px);
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
@@ -572,10 +572,20 @@
                 flex-direction: column;
                 text-align: center;
             }
-            .hero-visual { margin-top: 6rem; }
+            .hero-visual { margin-top: 6rem; width: 100%; }
             .nav-links { display: none; }
             .project-content, .experience-content { border-left: none; padding-left: 0; margin-left: 0; }
             .item-number { left: 0; opacity: 0.1; }
+            
+            .id-card-wrapper {
+                width: 100%;
+                max-width: 360px;
+                height: 500px;
+            }
+            .id-photo {
+                object-fit: cover;
+                height: 280px;
+            }
         }
     </style>
 </head>
