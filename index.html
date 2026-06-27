@@ -64,9 +64,11 @@
             width: 6px; height: 6px;
         }
 
-        .hover-target:hover ~ .cursor-dot {
-            width: 60px; height: 60px;
-            background-color: #fff;
+        @media (hover: hover) {
+            .hover-target:hover ~ .cursor-dot {
+                width: 60px; height: 60px;
+                background-color: #fff;
+            }
         }
 
         /* Typography */
@@ -159,7 +161,9 @@
             opacity: 0.7;
             transition: opacity 0.3s;
         }
-        .nav-link:hover { opacity: 1; }
+        @media (hover: hover) {
+            .nav-link:hover { opacity: 1; }
+        }
 
         /* Layout */
         section {
@@ -565,7 +569,9 @@
             background: var(--accent-color);
             transition: width 0.3s;
         }
-        .contact-link:hover::after { width: 100%; }
+        @media (hover: hover) {
+            .contact-link:hover::after { width: 100%; }
+        }
 
         /* Responsive */
         @media (max-width: 1024px) {
