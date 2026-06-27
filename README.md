@@ -13,5 +13,10 @@ This repository contains the source code for my personal portfolio. It is design
 ## Deployment
 The portfolio is deployed and hosted via GitHub Pages.
 
-## Contact
-Please refer to the contact section within the portfolio for professional inquiries.
+## Contact Details
+For professional inquiries and collaboration, please reach out via the following channels:
+
+- **Email**: [manimaranayyappan555@gmail.com](mailto:manimaranayyappan555@gmail.com)
+- **LinkedIn**: [in/manimaran-ayyappan](https://www.linkedin.com/in/manimaran-ayyappan)
+- **GitHub**: [@MANIMARAN-07](https://github.com/MANIMARAN-07)
+- **LeetCode**: [MANIMARAN-A](https://leetcode.com/u/MANIMARAN-A/)
